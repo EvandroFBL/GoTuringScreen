@@ -21,8 +21,10 @@ var (
 	flagDebug       = flag.Bool("debug", false, "Save PNG frames to /tmp/ instead of sending to hardware")
 	flagRefresh     = flag.Duration("refresh", 2*time.Second, "Update interval")
 	flagBG          = flag.String("bg", "", "Background image file (PNG/JPEG)")
-	flagMessage     = flag.String("message", "", "Send a message text to the right panel")
+	flagMessage     = flag.String("message", "", "Send a message text to the message panel")
 	flagMsgFile     = flag.String("message-file", "", "Send message from a file")
+	flagMsgTTL      = flag.Int("message-ttl", 0, "Auto-dismiss message after N seconds (0 = never)")
+	flagMsgColor    = flag.String("message-color", "ffffff", "Message hex color, e.g. ff5500")
 	flagAPIPort     = flag.Int("api-port", 8080, "HTTP API server port (0 to disable)")
 	flagOrientation = flag.String("orientation", "portrait", "Screen orientation: portrait, landscape, reverse-portrait, reverse-landscape")
 )
@@ -40,14 +42,14 @@ func main() {
 
 	// Send a message from CLI flag or message file
 	if *flagMessage != "" {
-		msgQueue.Add(*flagMessage, "ffffff", 0)
+		msgQueue.Add(*flagMessage, *flagMsgColor, *flagMsgTTL)
 	}
 	if *flagMsgFile != "" {
 		data, err := os.ReadFile(*flagMsgFile)
 		if err != nil {
 			log.Fatalf("message-file: %v", err)
 		}
-		msgQueue.Add(string(data), "ffffff", 0)
+		msgQueue.Add(string(data), *flagMsgColor, *flagMsgTTL)
 	}
 
 	// ── Background image ─────────────────────────────────────────

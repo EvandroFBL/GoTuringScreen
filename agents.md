@@ -142,6 +142,8 @@ go run ./cmd/testrender/
 -bg            Background image file (PNG/JPEG)
 -message       Send a message text to the message panel
 -message-file  Send message from a file
+-message-ttl   Auto-dismiss message after N seconds (default 0 = never)
+-message-color Message hex color, e.g. ff5500 (default ffffff)
 -api-port      HTTP API port (0 to disable, default 8080)
 -orientation   Screen orientation: portrait (default), landscape, reverse-portrait, reverse-landscape
 ```

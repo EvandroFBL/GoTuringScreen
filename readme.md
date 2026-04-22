@@ -59,6 +59,8 @@ go run ./cmd/testrender/
 | `--bg` | _none_ | Background image (PNG/JPEG, scaled to fit) |
 | `--message` | _none_ | Send a message text to the message panel |
 | `--message-file` | _none_ | Send message from a file |
+| `--message-ttl` | `0` | Auto-dismiss message after N seconds (0 = never) |
+| `--message-color` | `ffffff` | Message hex color, e.g. `ff5500` |
 | `--api-port` | `8080` | HTTP API port (`0` to disable) |
 | `--debug` | `false` | Save PNG frames to `/tmp/` instead of serial |
 | `--orientation` | `portrait` | `portrait`, `landscape`, `reverse-portrait`, `reverse-landscape` |
@@ -87,7 +89,7 @@ Progress bars stretch to fill the info panel width automatically.
 Enabled with `--api-port 8080` (or any non-zero port).
 
 ```bash
-# Send a message
+# Send a message with auto-dismiss after 60 seconds
 curl -X POST http://localhost:8080/message \
   -H "Content-Type: application/json" \
   -d '{"text":"Hello","color":"ff5500","ttl":60}'
