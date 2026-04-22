@@ -204,6 +204,7 @@ Enabled with `--api-port 8080`:
 POST /message  {"text": "Hello", "color": "ff5500", "ttl": 60}
 GET  /messages
 DELETE /message/:id
+GET  /health
 ```
 
 Message fields: `text` (max 200 chars), `color` (hex RGB, default `ffffff`), `ttl` (auto-dismiss seconds, default 0=never). Queue holds up to 20 messages (FIFO eviction). Long text is word-wrapped to fit the message panel width.

@@ -99,6 +99,9 @@ curl http://localhost:8080/messages
 
 # Delete a message
 curl -X DELETE http://localhost:8080/message/<id>
+
+# Health check
+curl http://localhost:8080/health
 ```
 
 Message fields:
