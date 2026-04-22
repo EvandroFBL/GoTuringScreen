@@ -4,7 +4,6 @@ A Go dashboard for the 3.5" USB-C Turing Smart Screen (320×480, RGB565 serial).
 
 Displays live system stats (CPU, RAM, GPU, Disk, Network) and a scrollable message queue with word-wrapped text.
 
-**Location:** `/home/evndr/dev/screen/`
 **Language:** Go 1.25+
 
 ---
@@ -20,7 +19,7 @@ Displays live system stats (CPU, RAM, GPU, Disk, Network) and a scrollable messa
 ## Build
 
 ```bash
-cd /home/evndr/dev/screen/go
+cd go
 go build -o bin/dashboard ./cmd/dashboard/
 go build -o bin/testrender  ./cmd/testrender/
 ```
@@ -167,7 +166,7 @@ Queue holds up to 20 messages (FIFO eviction). Long messages wrap at word bounda
 ## Project Structure
 
 ```
-/home/evndr/dev/screen/
+/
 ├── readme.md
 ├── agents.md                          # Agent handbook
 ├── turing-smart-screen.md             # Hardware protocol reference
